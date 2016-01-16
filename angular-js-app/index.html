@@ -33,8 +33,8 @@
  
    <hr/>
  
-   <div class="container">
-     <div ng-controller="HomeController">
+   <div class="container" >
+     <div>
        <h1>{{ helloWorld }}</h1>
        <p>Writing this live into the browser...</p>
      </div>
@@ -43,368 +43,164 @@
    <hr/>
  
    <!-- /clienti -->
-   <div class="container">
-     <h1 id="cl">Client</h1>
-     <h2>List all resources</h2>
+   <div class="container" ng-controller="ClientController">
+     <h1>Clienti</h1>
+     <h2>Listeaza toti clientii</h2>
      <table class="table table-bordered">
        <tr>
-         <th>Last name</th>
-         <th>First name</th>
-         <th>ID</th>
+			<th ng-repeat="field in fields">{{field | uppercase}}</th>
+            <th style="width:210px;">OPTIONS</th>
+       </tr>
+       <tr ng-repeat="client in clienti" data-id="{{client.id}}">
+            <td>{{ client.id }}</td>
+            <td>{{ client.name }}</td>
+            <td>
+                <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+                </a>
+                <a href="">
+                    <button ng-click="setUpdatePerson(client)" class="btn btn-info btn-xs">
+                        Edit
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
 
-         <th style="width:210px;">Options</th>
-       </tr>
-       <tr>
-         <td>Stancioiu</td>
-         <td>Ovidiu</td>
-         <td>1</td>
-         <td>
-           <a href="">
-             <span class="label label-success">
-               Open
-               <span class="glyphicon glyphicon-folder-open"></span>
-             </span>
-           </a>
-           <a href="">
-             <span class="label label-primary">
-               Edit
-               <span class="glyphicon glyphicon-edit"></span>
-             </span>
-           </a>
-           <a href="">
-             <span class="label label-danger">
-               Remove
-               <span class="glyphicon glyphicon-remove"></span>
-             </span>
-           </a>
-         </td>
-       </tr>
-       <tr>
-         <td>Tanase</td>
-         <td>Mihai</td>
-         <td>2</td>
-         <td>
-           <a href="">
-             <span class="label label-success">
-               Open
-               <span class="glyphicon glyphicon-folder-open"></span>
-             </span>
-           </a>
-           <a href="">
-             <span class="label label-primary">
-               Edit
-               <span class="glyphicon glyphicon-edit"></span>
-             </span>
-           </a>
-           <a href="">
-             <span class="label label-danger">
-               Remove
-               <span class="glyphicon glyphicon-remove"></span>
-             </span>
-           </a>
-         </td>
-       </tr>
-       <tr>
-         <td>Dumitru</td>
-         <td>Sofia</td>
-         <td>3</td>
-         <td>
-           <a href="">
-             <span class="label label-success">
-               Open
-               <span class="glyphicon glyphicon-folder-open"></span>
-             </span>
-           </a>
-           <a href="">
-             <span class="label label-primary">
-               Edit
-               <span class="glyphicon glyphicon-edit"></span>
-             </span>
-           </a>
-           <a href="">
-             <span class="label label-danger">
-               Remove
-               <span class="glyphicon glyphicon-remove"></span>
-             </span>
-           </a>
-         </td>
-       </tr>
-       <tr>
-         <td>Roscov</td>
-         <td>Marian</td>
-         <td>4</td>
-         <td>
-           <a href="">
-             <span class="label label-success">
-               Open
-               <span class="glyphicon glyphicon-folder-open"></span>
-             </span>
-           </a>
-           <a href="">
-             <span class="label label-primary">
-               Edit
-               <span class="glyphicon glyphicon-edit"></span>
-             </span>
-           </a>
-           <a href="">
-             <span class="label label-danger">
-               Remove
-               <span class="glyphicon glyphicon-remove"></span>
-             </span>
-           </a>
-         </td>
-       </tr>
-     </table>
- 
-     <div class="row">
-       <div class="col-md-3">
-         <h2>Edit a client</h2>
-         <form action="" method="">
-           <div class="form-group">
-             <label for="attribute1">Last name</label>
-             <input type="text" class="form-control" id="attribute1" placeholder="Attribute 1">
-           </div>
-           <div class="form-group">
-             <label for="attribute2">First name</label>
-             <input type="text" class="form-control" id="attribute2" placeholder="Attribute 2">
-           </div>
-           <div class="form-group">
-             <label for="attribute3">ID</label>
-             <input type="text" class="form-control" id="attribute3" placeholder="Attribute 3">
-           </div>
-           <button type="submit" class="btn btn-info">Save</button>
-         </form>
-       </div>
- 
- 
-       <div class="col-md-3 col-md-offset-6">
-         <h2>Add a client</h2>
-         <form action="" method="">
-           <div class="form-group">
-             <label for="attribute1">Last name</label>
-             <input type="text" class="form-control" id="attribute1" placeholder="Attribute 1">
-           </div>
-           <div class="form-group">
-             <label for="attribute2">First name</label>
-             <input type="text" class="form-control" id="attribute2" placeholder="Attribute 2">
-           </div>
-           <div class="form-group">
-             <label for="attribute3">ID</label>
-             <input type="text" class="form-control" id="attribute3" placeholder="Attribute 3">
-           </div>
-           <button type="submit" class="btn btn-success">Add</button>
-         </form>
-       </div>
-     </div>
- 
-     <div class="row">
-       <div class="col-md-12">
-         <h2>Show a client</h2>
-       </div>
-       <div class="col-md-2">
-         <img src="http://lorempixel.com/200/200/technics/?id=1" class="img-thumbnail"/>
-       </div>
-       <div class="col-md-10">
-         <h1>Last name</h1>
-         <p>First name, ID</p>
-         <h3>Sub resource</h3>
-         <table class="table table-bordered table-striped">
-           <tr>
-             <td>Stanciu</td>
-             <td>Florin</td>
-           </tr>
-           <tr>
-             <td>5</td>
-           </tr>
-         </table>
-       </div>
-     </div>
-   </div>
+                </a>
+                <a href="">
+                    <button ng-click="deletePersoana(client.id)" class="btn btn-danger btn-xs">
+                        Remove
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h2>Editeaza client</h2>
+
+            <form action="" method="">
+                <div class="form-group">
+                    <label for="attribute1">ID</label>
+                    <input type="text" class="form-control" id="attribute1" placeholder="ID" ng-model="editPerson.id">
+                </div>
+                <div class="form-group">
+                    <label for="attribute2">NUME</label>
+                    <input type="text" class="form-control" id="attribute2" placeholder="NUME" ng-model="editPerson.name">
+                </div>
+                <button type="submit" class="btn btn-info" ng-click="updatePerson()">Save</button>
+            </form>
+        </div>
+
+
+        <div class="col-md-3 col-md-offset-6">
+            <h2>Adauga un client</h2>
+
+
+                <div class="form-group">
+                    <label for="attribute1">ID</label>
+                    <input type="text" class="form-control" id="attribute1" placeholder="ID" ng-model="client.id">
+                </div>
+                <div class="form-group">
+                    <label for="attribute2">NUME</label>
+                    <input type="text" class="form-control" id="attribute2" placeholder="NUME" ng-model="client.name">
+                </div>
+
+                <button ng-click="addPersoana(client)" class="btn btn-success">Add</button>
+
+        </div>
+    </div>
+
+</div>
+
  
    <hr/>
  
    <!-- /cars-->
-   <div class="container">
+   <div class="container" nr-controller="CarController">
      <h1 id="ca">Car</h1>
-     <h2>List all resources</h2>
+     <h2>List all cars</h2>
      <table class="table table-bordered">
        <tr>
-         <th>Brand</th>
-         <th>Model</th>
-		 <th>ID</th>
-         <th style="width:210px;">Options</th>
-       </tr>
-       <tr>
-         <td>BMW</td>
-         <td>S3</td>
-		 <td>345</td>
-         <td>
-           <a href="">
-             <span class="label label-success">
-               Open
-               <span class="glyphicon glyphicon-folder-open"></span>
-             </span>
-           </a>
-           <a href="">
-             <span class="label label-primary">
-               Edit
-               <span class="glyphicon glyphicon-edit"></span>
-             </span>
-           </a>
-           <a href="">
-             <span class="label label-danger">
-               Remove
-               <span class="glyphicon glyphicon-remove"></span>
-             </span>
-           </a>
-         </td>
-       </tr>
-       <tr>
-         <td>Dacia</td>
-         <td>Logan</td>
-		 <td>243</td>
-         <td>
-           <a href="">
-             <span class="label label-success">
-               Open
-               <span class="glyphicon glyphicon-folder-open"></span>
-             </span>
-           </a>
-           <a href="">
-             <span class="label label-primary">
-               Edit
-               <span class="glyphicon glyphicon-edit"></span>
-             </span>
-           </a>
-           <a href="">
-             <span class="label label-danger">
-               Remove
-               <span class="glyphicon glyphicon-remove"></span>
-             </span>
-           </a>
-         </td>
-       </tr>
-       <tr>
-         <td>Fiat</td>
-         <td>Albea</td>
-		 <td>777</td>
-         <td>
-           <a href="">
-             <span class="label label-success">
-               Open
-               <span class="glyphicon glyphicon-folder-open"></span>
-             </span>
-           </a>
-           <a href="">
-             <span class="label label-primary">
-               Edit
-               <span class="glyphicon glyphicon-edit"></span>
-             </span>
-           </a>
-           <a href="">
-             <span class="label label-danger">
-               Remove
-               <span class="glyphicon glyphicon-remove"></span>
-             </span>
-           </a>
-         </td>
-       </tr>
-       <tr>
-         <td>Lambourghini</td>
-         <td>Aventador</td>
-		 <td>223</td>
-         <td>
-           <a href="">
-             <span class="label label-success">
-               Open
-               <span class="glyphicon glyphicon-folder-open"></span>
-             </span>
-           </a>
-           <a href="">
-             <span class="label label-primary">
-               Edit
-               <span class="glyphicon glyphicon-edit"></span>
-             </span>
-           </a>
-           <a href="">
-             <span class="label label-danger">
-               Remove
-               <span class="glyphicon glyphicon-remove"></span>
-             </span>
-           </a>
-         </td>
-       </tr>
-     </table>
+            <th ng-repeat="field in fields">{{field | uppercase}}</th>
+            <th style="width:210px;">OPTIONS</th>
+        </tr>
+       <tr ng-repeat="car in cars" data-id="{{car.id}}">
+            <td>{{ car.id }}</td>
+            <td>{{ car.brand }}</td>
+			<td>{{ car.model }}</td>
+            <td>
+                <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+                </a>
+                <a href="">
+                    <button ng-click="setUpdateCar(car)" class="btn btn-info btn-xs">
+                        Edit
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+
+                </a>
+                <a href="">
+                    <button ng-click="deleteCar(car.id)" class="btn btn-danger btn-xs">
+                        Remove
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </a>
+            </td>
+        </tr>
+    </table>
  
-     <div class="row">
-       <div class="col-md-3">
-         <h2>Edit a car</h2>
-         <form action="" method="">
-           <div class="form-group">
-             <label for="attribute1">Brand</label>
-             <input type="text" class="form-control" id="brand" placeholder="Brand">
-           </div>
-           <div class="form-group">
-             <label for="attribute2">Model</label>
-             <input type="text" class="form-control" id="model" placeholder="Model">
-           </div>
-		   <div class="form-group">
-             <label for="attribute2">ID</label>
-             <input type="text" class="form-control" id="id_car" placeholder="ID">
-           </div>
-           <button type="submit" class="btn btn-info">Save</button>
-         </form>
-       </div>
- 
- 
-       <div class="col-md-3 col-md-offset-6">
-         <h2>Add a car</h2>
-         <form action="" method="">
-           <div class="form-group">
-             <label for="attribute1">Brand</label>
-             <input type="text" class="form-control" id="brand" placeholder="Brand">
-           </div>
-           <div class="form-group">
-             <label for="attribute2">Model</label>
-             <input type="text" class="form-control" id="model" placeholder="Model">
-           </div>
-		   <div class="form-group">
-             <label for="attribute2">ID</label>
-             <input type="text" class="form-control" id="id_car" placeholder="ID">
-           </div>
-           <button type="submit" class="btn btn-success">Add</button>
-         </form>
-       </div>
-     </div>
- 
-     <div class="row">
-       <div class="col-md-12">
-         <h2>Show a car</h2>
-       </div>
-       <div class="col-md-2">
-         <img src="http://lorempixel.com/200/200/technics/?id=2" class="img-thumbnail"/>
-       </div>
-       <div class="col-md-10">
-         <h1>Brand</h1>
-         <p>Model, ID</p>
-         <h3>Sub resource</h3>
-         <table class="table table-bordered table-striped">
-           <tr>
-             <th>Attribute 5</th>
-             <th>Attribute 6</th>
-           </tr>
-           <tr>
-             <td>Lorem ipsum</td>
-             <td>Lorem</td>
-           </tr>
-           <tr>
-             <td>Lorem ipsum dolor</td>
-             <td>Sir</td>
-           </tr>
-         </table>
-       </div>
-     </div>
-   </div>
+    <div class="row">
+        <div class="col-md-3">
+            <h2>Edit a car</h2>
+
+            <form action="" method="">
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" placeholder="ID" ng-model="editCar.id">
+                </div>
+                <div class="form-group">
+                    <label for="brand">BRAND</label>
+                    <input type="text" class="form-control" id="brand" placeholder="BRAND" ng-model="editCar.brand">
+                </div>
+				<div class="form-group">
+                    <label for="model">MODEL</label>
+                    <input type="text" class="form-control" id="model" placeholder="MODEL" ng-model="editCar.model">
+                </div>
+                <button type="submit" class="btn btn-info" ng-click="updateCar()">Save</button>
+            </form>
+        </div>
+
+
+        <div class="col-md-3 col-md-offset-6">
+            <h2>Add a car</h2>
+
+            <form action="" method="">
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" placeholder="ID" ng-model="car.id">
+                </div>
+                <div class="form-group">
+                    <label for="brand">BRAND</label>
+                    <input type="text" class="form-control" id="brand" placeholder="BRAND" ng-model="car.brand">
+                </div>
+				<div class="form-group">
+                    <label for="model">MODEL</label>
+                    <input type="text" class="form-control" id="model" placeholder="MODEL" ng-model="car.model">
+                </div>
+
+                <button ng-click="addCar(car)" class="btn btn-success">Add</button>
+            </form>
+        </div>
+    </div>
+
+</div>
  
    <hr/>
  
@@ -418,3 +214,6 @@
    <script src="js/jquery-1.11.3.min.js"></script>
    <script src="js/bootstrap.min.js"></script>
    <script src="js/angular.min.js"></script>
+   <script src="js/app.js"></script>
+  </body>
+</html>

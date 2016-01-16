@@ -1,0 +1,5 @@
+Comenzile:
+In folderul D:\Anul III\AWJ\Lab2 - clase java\awj\so-to-say\spring-java-app\initial dam comenzile:
+
+./gradlew build
+java -jar build/libs/spring-java-app-0.1.0.jar
